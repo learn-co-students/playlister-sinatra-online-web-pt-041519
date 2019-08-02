@@ -11,12 +11,7 @@ module Slugifiable
   module ClassMethods
     # Return object from database based on slug
     def find_by_slug(slug)
-      # Deslug
-      # name = slug.split("-").collect{|w| w.capitalize}.join(" ")
-      name = slug.gsub('-', ' ')
-
-      # Find in database
-      where('lower(name)=?', name).first
+      self.all.find{ |obj| obj.slug == slug}
     end
   end
 
