@@ -15,4 +15,7 @@ group :test do
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+  gem "tux", "~> 0.3.0"
 end
+
+gem "rack-flash3", "~> 1.0"
