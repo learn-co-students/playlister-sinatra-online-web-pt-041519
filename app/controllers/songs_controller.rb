@@ -35,18 +35,22 @@ class SongsController < ApplicationController
   end
 
   patch '/songs/:slug' do    
+    # Set empty array if no genre checkboxes
     if !params[:song].keys.include?("genre_ids")
       params[:song]["genre_ids"] = []
     end
 
+    # Find song and update
     @song = Song.find_by_slug(params[:slug])
     @song.update(params[:song])
 
+    # If artist param, find or create new and save song
     if !params[:artist_name].empty?
       @song.artist = Artist.find_or_create_by(name: params[:artist_name])
     end
     @song.save
     
+    # Update user and redirect
     flash[:message] = "Successfully updated song."
     redirect "/songs/#{@song.slug}"
   end
