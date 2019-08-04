@@ -2,8 +2,6 @@
 
 <ol>
   <% @genres.each do |genre| %>
-  <li>
-    <em><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></em>
-  </li>
+  <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
   <% end %>
 </ol>
